@@ -11,10 +11,16 @@ export class AppComponent {
   add(numbers: string):number {
     let nums = numbers.split(/[,\s;:\/\na-zA-Z]+/);
     let sum = 0;
+    let negativeNums: number[] = []
     nums.forEach(v => {
       if (!v) return;
-      sum += parseInt(v)
+      let val = parseInt(v);
+      if(val < 0) negativeNums.push(val);
+      sum += val;
     });
+    if (negativeNums.length > 0) {
+      throw new Error('negative numbers not allowed ' + negativeNums.join(','));
+    }
     return sum;
   }
 }
