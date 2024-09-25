@@ -9,9 +9,12 @@ export class AppComponent {
   title = 'tdd';
 
   add(numbers: string):number {
-    let nums = numbers.split(/[,\n]+/);
+    let nums = numbers.split(/[,\s;:\/\na-zA-Z]+/);
     let sum = 0;
-    nums.forEach(v => sum += parseInt(v));
+    nums.forEach(v => {
+      if (!v) return;
+      sum += parseInt(v)
+    });
     return sum;
   }
 }
