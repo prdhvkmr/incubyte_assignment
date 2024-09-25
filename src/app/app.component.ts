@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tdd';
-  
+
   add(numbers: string):number {
-    return 0;
+    let nums = numbers.split(',');
+    let sum = 0;
+    nums.forEach(v => sum += parseInt(v));
+    return sum;
   }
 }

@@ -33,6 +33,7 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.add('1\n2,3')).toBe(6);
   });
+  
   it('should return 3 - different delimiters', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
