@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tdd';
+  
+  add(numbers: string):number {
+    return 0;
+  }
 }

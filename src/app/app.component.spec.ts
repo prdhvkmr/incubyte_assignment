@@ -10,22 +10,33 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('should return 0',()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(app.add('')).toBe(0);
   });
 
-  it(`should have as title 'tdd'`, () => {
+  it('should return 1',()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('tdd');
+    expect(app.add('1')).toBe(1);
   });
 
-  it('should render title', () => {
+  it('should return 6',()=>{
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('tdd app is running!');
+    const app = fixture.componentInstance;
+    expect(app.add('1,5')).toBe(6);
   });
+
+  it('should return 6  - new line as delimiter',()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.add('1\n2,3')).toBe(6);
+  });
+  it('should return 3 - different delimiters', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.add('//;\n1;2')).toBe(3);
+  });
+
 });
